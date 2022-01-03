@@ -1,13 +1,14 @@
 #include <SFML/Graphics.hpp>
+#include "Player.h"
+#include "Ball.h"
 
 int main()
-{
+{   
     const int WINDOW_WIDTH = 800;
     const int WINDOW_HEIGHT = 600;
-
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "SUPER Pong EX");
-    sf::RectangleShape shape(sf::Vector2f(25.f, 100.f));
-    shape.setFillColor(sf::Color::Green);
+
+    Player* p1 = new Player("P1", sf::Color::Blue);
 
     while (window.isOpen())
     {
@@ -20,12 +21,12 @@ int main()
                 window.close();
         }
 
-        shape.setPosition(sf::Vector2f(.0f, sf::Mouse::getPosition(window).y));
-        if (shape.getPosition().y < 0) shape.setPosition(sf::Vector2f(0.f, 0.f));
-        if (shape.getPosition().y > WINDOW_HEIGHT - shape.getGlobalBounds().height) shape.setPosition(sf::Vector2f(0.f, WINDOW_HEIGHT - shape.getGlobalBounds().height));
+        p1->GetPaddle().setPosition(sf::Vector2f(.0f, sf::Mouse::getPosition(window).y));
+        if (p1->GetPaddle().getPosition().y < 0) p1->GetPaddle().setPosition(sf::Vector2f(0.f, 0.f));
+        if (p1->GetPaddle().getPosition().y > WINDOW_HEIGHT - p1->GetPaddle().getGlobalBounds().height) p1->GetPaddle().setPosition(sf::Vector2f(0.f, WINDOW_HEIGHT - p1->GetPaddle().getGlobalBounds().height));
 
         window.clear();
-        window.draw(shape);
+        window.draw(p1->GetPaddle());
         window.display();
     }
 
