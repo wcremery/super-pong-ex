@@ -12,8 +12,8 @@ private:
 	sf::Color m_color;
 	int m_score;
 	int m_healthPoint;
+	void InitPlayer();
 public:
 	Player(std::string_view name, sf::Color const color);
 	sf::RectangleShape GetPaddle();
-	void InitPlayer();
 };
