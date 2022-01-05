@@ -5,5 +5,5 @@
 class Bot : public Player
 {
 public:
-	virtual void Move(sf::RenderWindow const& window) override;
+	virtual void Move(sf::RenderWindow* const window) override;
 };

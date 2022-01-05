@@ -10,12 +10,12 @@ private:
 	void InitPlayer();
 protected:
 	std::string m_name;
-	sf::RectangleShape m_paddle;
+	sf::RectangleShape* m_paddle;
 	sf::Color m_color;
 	int m_score;
 	int m_healthPoint;
 public:
 	Player(std::string_view name, sf::Color const color);
-	sf::RectangleShape GetPaddle() const;
-	virtual void Move(sf::RenderWindow const& window) = 0;
+	sf::RectangleShape* GetPaddle() const;
+	virtual void Move(sf::RenderWindow* const window) = 0;
 };

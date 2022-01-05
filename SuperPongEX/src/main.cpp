@@ -6,31 +6,31 @@ int main()
 {   
     const int WINDOW_WIDTH = 800;
     const int WINDOW_HEIGHT = 600;
-    sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "SUPER Pong EX");
+    sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "SUPER Pong EX");
 
     Human* player1 = new Human("P1", sf::Color::Green);
-    sf::RectangleShape p1Paddle{ player1->GetPaddle() };
+    sf::RectangleShape* p1Paddle = player1->GetPaddle();
 
     Ball* ball = new Ball();
     sf::CircleShape ballShape{ ball->GetShape() };
 
-    while (window.isOpen())
+    while (window->isOpen())
     {
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) window.close();
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) window->close();
 
         sf::Event event;
-        while (window.pollEvent(event))
+        while (window->pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
-                window.close();
+                window->close();
         }
 
         player1->Move(window);
 
-        window.clear();
-        window.draw(p1Paddle);
-        window.draw(ballShape);
-        window.display();
+        window->clear();
+        window->draw(*p1Paddle);
+        window->draw(ballShape);
+        window->display();
     }
 
     return EXIT_SUCCESS;
