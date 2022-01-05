@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include "Player.h"
+#include "Human.h"
 #include "Ball.h"
 
 int main()
@@ -8,8 +8,11 @@ int main()
     const int WINDOW_HEIGHT = 600;
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "SUPER Pong EX");
 
-    Player* p1 = new Player("P1", sf::Color::Cyan);
-    sf::RectangleShape p1Paddle = p1->GetPaddle();
+    Human* player1 = new Human("P1", sf::Color::Green);
+    sf::RectangleShape p1Paddle{ player1->GetPaddle() };
+
+    Ball* ball = new Ball();
+    sf::CircleShape ballShape{ ball->GetShape() };
 
     while (window.isOpen())
     {
@@ -22,12 +25,11 @@ int main()
                 window.close();
         }
 
-        p1Paddle.setPosition(sf::Vector2f(.0f, sf::Mouse::getPosition(window).y));
-        if (p1Paddle.getPosition().y < 0) p1Paddle.setPosition(sf::Vector2f(0.f, 0.f));
-        if (p1Paddle.getPosition().y > WINDOW_HEIGHT - p1Paddle.getGlobalBounds().height) p1Paddle.setPosition(sf::Vector2f(0.f, WINDOW_HEIGHT - p1Paddle.getGlobalBounds().height));
+        player1->Move(window);
 
         window.clear();
         window.draw(p1Paddle);
+        window.draw(ballShape);
         window.display();
     }
 

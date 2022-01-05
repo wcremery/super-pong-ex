@@ -9,7 +9,7 @@ Player::Player(std::string_view name, sf::Color const color):
 	m_paddle.setFillColor(color);
 }
 
-sf::RectangleShape Player::GetPaddle()
+sf::RectangleShape Player::GetPaddle() const
 {
 	return m_paddle;
 }

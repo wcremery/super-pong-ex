@@ -8,6 +8,11 @@ Ball::Ball():
 	InitBall();
 }
 
+sf::CircleShape Ball::GetShape() const
+{
+	return m_shape;
+}
+
 void Ball::InitBall()
 {
 	m_shape = sf::CircleShape(m_radius);
