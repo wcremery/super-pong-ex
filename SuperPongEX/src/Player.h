@@ -14,6 +14,7 @@ protected:
 	sf::Color m_color;
 	int m_score;
 	int m_healthPoint;
+	float m_edgeSpacing;
 public:
 	Player(std::string_view name, sf::Color const color);
 	sf::RectangleShape* GetPaddle() const;

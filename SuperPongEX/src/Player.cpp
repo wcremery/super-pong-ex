@@ -3,7 +3,8 @@
 Player::Player(std::string_view name, sf::Color const color): 
 	m_name { name },
 	m_score{ 0 },
-	m_healthPoint{ 0 }
+	m_healthPoint{ 0 },
+	m_edgeSpacing{ 50.f }
 {
 	InitPlayer();
 	m_paddle->setFillColor(color);

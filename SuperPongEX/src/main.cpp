@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "Human.h"
+#include "Bot.h"
 #include "Ball.h"
 
 int main()
@@ -11,6 +12,8 @@ int main()
     Human* player1 = new Human("P1", sf::Color::Green);
     sf::RectangleShape* p1Paddle = player1->GetPaddle();
 
+    Bot* IA = new Bot(sf::Color::Red);
+    sf::RectangleShape* IAPaddle = IA->GetPaddle();
     Ball* ball = new Ball();
     sf::CircleShape ballShape{ ball->GetShape() };
 
@@ -29,6 +32,7 @@ int main()
 
         window->clear();
         window->draw(*p1Paddle);
+        window->draw(*IAPaddle);
         window->draw(ballShape);
         window->display();
     }
