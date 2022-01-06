@@ -17,8 +17,13 @@ int main()
     Ball* ball = new Ball();
     sf::CircleShape ballShape{ ball->GetShape() };
 
+    sf::Clock clock;
+    sf::Time deltaTime;
+
     while (window->isOpen())
     {
+        deltaTime = clock.restart();
+
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) window->close();
 
         sf::Event event;
@@ -28,7 +33,8 @@ int main()
                 window->close();
         }
 
-        player1->Move(window);
+        player1->Move(deltaTime, window);
+        IA->Move(deltaTime, window);
 
         window->clear();
         window->draw(*p1Paddle);
