@@ -6,7 +6,7 @@ Human::Human(std::string name, sf::Color color)
     m_paddle->setPosition(m_edgeSpacing, m_paddle->getPosition().y);
 }
 
-void Human::Move(sf::Time dt, sf::RenderWindow* const window)
+void Human::Move(sf::Time* const dt, sf::RenderWindow* const window)
 {
     m_paddle->setPosition(sf::Vector2f(m_paddle->getPosition().x, sf::Mouse::getPosition(*window).y));
 

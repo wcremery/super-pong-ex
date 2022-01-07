@@ -21,5 +21,5 @@ protected:
 public:
 	Player(std::string_view name, sf::Color const color);
 	sf::RectangleShape* GetPaddle() const;
-	virtual void Move(sf::Time dt, sf::RenderWindow* const window) = 0;
+	virtual void Move(sf::Time* const dt, sf::RenderWindow* const window) = 0;
 };

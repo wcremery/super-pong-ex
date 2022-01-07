@@ -33,8 +33,8 @@ int main()
                 window->close();
         }
 
-        player1->Move(deltaTime, window);
-        IA->Move(deltaTime, window);
+        player1->Move(&deltaTime, window);
+        IA->Move(&deltaTime, window);
 
         window->clear();
         window->draw(*p1Paddle);
